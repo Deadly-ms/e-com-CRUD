@@ -7,7 +7,7 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import './index.css'; 
 
-const API_URL = 'http://localhost:5000/api/products';
+const API_URL = 'https://e-com-crud-1.onrender.com';
 
 const App = () => {
   const [products, setProducts] = useState([]);
