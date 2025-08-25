@@ -16,18 +16,35 @@ const App = () => {
   const [error, setError] = useState(null);
 
   // Fetch all products from the backend.
-  const fetchProducts = async () => {
-      try {
-          setIsLoading(true);
-          const response = await axios.get(API_URL);
-          setProducts(response.data);
-          setError(null);
-      } catch (err) {
-          setError('Failed to fetch products. Please check if the backend server is running.');
-      } finally {
-          setIsLoading(false);
-      }
+//   const fetchProducts = async () => {
+//       try {
+//           setIsLoading(true);
+//           const response = await axios.get(API_URL);
+//           setProducts(response.data);
+//           setError(null);
+//       } catch (err) {
+//           setError('Failed to fetch products. Please check if the backend server is running.');
+//       } finally {
+//           setIsLoading(false);
+//       }
+//   };
+const fetchProducts = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(API_URL);
+  
+      // If backend returns { products: [...] }
+      const productList = Array.isArray(response.data) ? response.data : response.data.products;
+  
+      setProducts(productList || []); // Always set as array
+      setError(null);
+    } catch (err) {
+      setError('Failed to fetch products. Please check if the backend server is running.');
+    } finally {
+      setIsLoading(false);
+    }
   };
+  
 
   // Initial data fetch on component mount.
   useEffect(() => {
