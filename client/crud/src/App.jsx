@@ -7,7 +7,9 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import './index.css'; 
 
-const API_URL = 'https://e-com-crud-1.onrender.com';
+
+const API_URL = 'https://e-com-crud-1.onrender.com/api/products';
+
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -15,19 +17,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch all products from the backend.
-//   const fetchProducts = async () => {
-//       try {
-//           setIsLoading(true);
-//           const response = await axios.get(API_URL);
-//           setProducts(response.data);
-//           setError(null);
-//       } catch (err) {
-//           setError('Failed to fetch products. Please check if the backend server is running.');
-//       } finally {
-//           setIsLoading(false);
-//       }
-//   };
+
 const fetchProducts = async () => {
     try {
       setIsLoading(true);
